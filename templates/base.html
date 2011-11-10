@@ -2,25 +2,26 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-    <title>Blog</title>
-    <link rel="stylesheet" type="text/css" href="/style.css" />
-    {% block extra_css %}{% endblock %}
-    {% block extra_js %}{% endblock %}
+	<title>Blog</title>
+	<link rel="stylesheet" type="text/css" href="/style.css">
+	<link href='http://fonts.googleapis.com/css?family=Metrophobic|Rokkitt' rel='stylesheet' type='text/css'>
+	{% block extra_css %}{% endblock %}
+	{% block extra_js %}{% endblock %}
 </head>
 <body>
-    <div id="wrapper">
-        {% block body %}
-            <div id="nav">
-                <p><a href="/">Home</a> | <a href="/archives.html">Archives</a></p>
-            </div>
-            <div id="header">
-                <h1>Blog</h1>
-            </div>
+	<div id="wrapper">
+		{% block body %}
+			<div id="nav">
+				<p><a href="/">Home</a> | <a href="/archives.html">Archives</a></p>
+			</div>
+			<div id="header">
+				<h1>Blog</h1>
+			</div>
 
-            <div id="main">
-                {% block main %}{% endblock %}
-            </div>
-        {% endblock %}
-    </div>
+			<div id="main">
+				{% block main %}{% endblock %}
+			</div>
+		{% endblock %}
+	</div>
 </body>
 </html>

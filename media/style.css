@@ -1,7 +1,7 @@
 body {
 	background-color: #000;
-	color: #eee;
-	font: 16px sans-serif;
+	color: #ddd;
+	font: 18px Metrophobic, sans-serif;
 }
 
 a:link, a:visited, a:active {
@@ -29,32 +29,35 @@ img {
 	margin: 40px 0 27px 0;
 }
 	#header h1 {
-		font-family: sans-serif;
-		font-weight: normal;
-		font-size: 3em;
 		margin-top: 10px; 
-		color: #9b9080;
+		color: #987;
+		font-weight: bold;
+		font-size: 3em;
 		display: inline;
 	}
 
 #main {
-	font-family: serif;
 }
 	#main .entry h2 { /* title */
-		font: bold 2em sans-serif;
+		font-weight: bold;
+		font-size: 1.75em;
 		margin: 1em 0 0;
 	}
 	#main .entry h3 { /* date */
-		font: small-caps normal 1em sans-serif;
+		font-size: 1em;
+		font-weight: normal;
+		font-variant: small-caps;
 		margin: 0 0 1em;
 	}
 	#main .entry_content p {
 		line-height: 1.5;
 		margin-left: 1em;
+		font-family: Rokkitt, serif;
 	}
 	#main .entry_content a {
 		text-decoration: underline;
 	}
 	#main .entry_content h2 {
-		font: bold 1.5em sans-serif;
+		font-weight: bold;
+		font-size: 1.5em;
 	}
