@@ -5,11 +5,11 @@ body {
 }
 
 a:link, a:visited, a:active {
-	color: #08a;
+	color: #58a;
 	text-decoration: none;
 }
 a:hover {
-	color: #0ae;
+	color: #5ad;
 }
 
 img {
