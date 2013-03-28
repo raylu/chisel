@@ -12,6 +12,10 @@ a:hover {
 	color: #5ad;
 }
 
+code {
+	font-size: 0.9em;
+}
+
 img {
 	border: 1px solid #777;
 	box-shadow: 0 0 1px #777;
