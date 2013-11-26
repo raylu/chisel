@@ -11,7 +11,8 @@ import jinja2, markdown
 
 #Settings
 SOURCE = "./blog/" #end with slash
-DESTINATION = "./export/" #end with slash
+DRAFTS = "./drafts/"
+DESTINATION = "./export/"
 HOME_SHOW = 100 #numer of entries to show on homepage
 TEMPLATE_PATH = "./templates/"
 TEMPLATE_OPTIONS = {}
@@ -19,6 +20,7 @@ TEMPLATES = {
     'home': "home.html",
     'detail': "detail.html",
     'archive': "archive.html",
+    'drafts': "drafts.html",
 }
 TIME_FORMAT = "%B %d, %Y"
 ENTRY_TIME_FORMAT = "%m/%d/%Y"
@@ -114,6 +116,12 @@ def detail_pages(f, e):
     template = e.get_template(TEMPLATES['detail'])
     for file in f:
         write_file(file['url'], template.render(entry=file))
+
+@step
+def drafts(f, e):
+    files = sorted(get_tree(DRAFTS), cmp=compare_entries)
+    template = e.get_template(TEMPLATES['drafts'])
+    write_file('drafts.html', template.render(entries=files))
 
 def main():
     print "Chiseling..."

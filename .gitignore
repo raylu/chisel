@@ -3,3 +3,4 @@ media/
 ! export/style.css
 ! media/style.css
 blog/*.markdown
+drafts/*.markdown
