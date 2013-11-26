@@ -12,7 +12,7 @@ import jinja2, markdown
 #Settings
 SOURCE = "./blog/" #end with slash
 DESTINATION = "./export/" #end with slash
-HOME_SHOW = 15 #numer of entries to show on homepage
+HOME_SHOW = 100 #numer of entries to show on homepage
 TEMPLATE_PATH = "./templates/"
 TEMPLATE_OPTIONS = {}
 TEMPLATES = {
@@ -47,10 +47,29 @@ def get_tree(source):
             title = f.readline()
             date = time.strptime(f.readline().strip(), ENTRY_TIME_FORMAT)
             year, month, day = date[:3]
+
+            f.readline() # skip blank line
+            fold = []
+            lines = []
+            seen_paragraph = False
+            above_fold = True
+            while True:
+                line = f.readline().decode('utf-8')
+                if line == '':
+                    break
+                lines.append(line)
+                if line[0] == '\n' and seen_paragraph:
+                    above_fold = False
+                elif line[0] not in ['\n', '#']:
+                    seen_paragraph = True
+                if above_fold:
+                    fold.append(line)
+
             files.append({
                 'title': title,
                 'epoch': time.mktime(date),
-                'content': FORMAT(''.join(f.readlines()[1:]).decode('UTF-8')),
+                'fold': FORMAT(''.join(fold)),
+                'content': FORMAT(''.join(lines)),
                 'url': '/'.join([str(year), "%.2d" % month, "%.2d" % day, os.path.splitext(name)[0] + ".html"]),
                 'pretty_date': time.strftime(TIME_FORMAT, date),
                 'date': date,
@@ -74,7 +93,7 @@ def write_file(url, data):
     if not os.path.isdir(dirs):
         os.makedirs(dirs)
     file = open(path, "w")
-    file.write(data.encode('UTF-8'))
+    file.write(data.encode('utf-8'))
     file.close()
 
 @step
