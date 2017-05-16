@@ -123,6 +123,10 @@ def drafts(f, e):
     template = e.get_template(TEMPLATES['drafts'])
     write_file('drafts.html', template.render(entries=files))
 
+@step
+def robots_txt(f, e):
+	write_file('robots.txt', 'User-agent: *\nDisallow:\n')
+
 def main():
     print "Chiseling..."
     print "\tReading files...",
