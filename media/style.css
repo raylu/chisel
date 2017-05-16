@@ -1,3 +1,7 @@
+* {
+	box-sizing: border-box;
+}
+
 body {
 	background-color: #000;
 	color: #ddd;
@@ -18,7 +22,7 @@ img {
 }
 
 #wrapper {
-	width: 800px;
+	width: 900px;
 	margin: 10px auto 100px;
 	padding: 10px 50px 25px;
 	background-color: #111;
@@ -51,8 +55,7 @@ img {
 	}
 	#main .entry_content p {
 		line-height: 1.5;
-		margin-left: 1em;
-		font-family: Rokkitt, serif;
+		font-family: 'Roboto Slab', serif;
 	}
 	#main .entry_content a {
 		text-decoration: underline;
@@ -67,3 +70,23 @@ img {
 	#main .entry_content code {
 		font-size: 0.75em;
 	}
+
+@media (max-width: 900px) {
+	body {
+		margin: 0;
+		font-size: 14px;
+	}
+	#header {
+		margin: 12px 0 6px 0;
+	}
+	#wrapper {
+		width: 100%;
+		padding: 8px;
+	}
+	blockquote {
+		margin: 1em 2em;
+	}
+	a {
+		overflow-wrap: break-word;
+	}
+}
