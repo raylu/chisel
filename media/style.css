@@ -4,7 +4,7 @@
 
 body {
 	background-color: #000;
-	color: #ddd;
+	color: #aaa;
 	font: 18px Metrophobic, sans-serif;
 }
 
@@ -53,9 +53,11 @@ img {
 		font-variant: small-caps;
 		margin: 0 0 1em;
 	}
+	#main .entry_content {
+		font-family: 'Roboto Slab', serif;
+	}
 	#main .entry_content p {
 		line-height: 1.5;
-		font-family: 'Roboto Slab', serif;
 	}
 	#main .entry_content a {
 		text-decoration: underline;
@@ -66,9 +68,6 @@ img {
 	}
 	#main .entry_content pre {
 		margin-left: 2em;
-	}
-	#main .entry_content code {
-		font-size: 0.75em;
 	}
 
 @media (max-width: 900px) {
