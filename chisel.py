@@ -26,7 +26,7 @@ TIME_FORMAT = "%B %d, %Y"
 ENTRY_TIME_FORMAT = "%m/%d/%Y"
 #FORMAT should be a callable that takes in text
 #and returns formatted text
-FORMAT = lambda text: markdown.markdown(text, ['footnotes',]) 
+FORMAT = lambda text: markdown.markdown(text, extensions=['footnotes'])
 #########
 
 STEPS = []
