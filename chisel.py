@@ -74,6 +74,7 @@ def get_tree(source):
                 'content': FORMAT(''.join(lines)),
                 'url': '/'.join([str(year), "%.2d" % month, "%.2d" % day, os.path.splitext(name)[0] + ".html"]),
                 'pretty_date': time.strftime(TIME_FORMAT, date),
+                'iso_date': time.strftime('%Y-%m-%d', date),
                 'date': date,
                 'year': year,
                 'month': month,
