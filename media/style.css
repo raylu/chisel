@@ -16,15 +16,9 @@ a:hover {
 	color: #5ad;
 }
 
-img {
-	border: 1px solid #777;
-	box-shadow: 0 0 1px #777;
-	max-width: 100%;
-}
-
 #wrapper {
 	width: 900px;
-	margin: 10px auto 100px;
+	margin: 10px auto;
 	padding: 10px 50px 25px;
 	background-color: #111;
 	box-shadow: 0 0 5px #222;
@@ -71,16 +65,34 @@ main {
 		margin-left: 2em;
 		overflow-x: scroll;
 	}
+	main .entry_content img {
+		border: 1px solid #777;
+		box-shadow: 0 0 1px #777;
+		max-width: 100%;
+	}
+
+footer {
+	width: 900px;
+	margin: 1em auto 100px;
+	text-align: right;
+}
+	footer img {
+		height: 32px;
+	}
 
 @media (max-width: 900px) {
 	body {
 		margin: 0;
 		font-size: 14px;
 	}
+	#wrapper {
+		width: 100%;
+		padding: 8px;
+	}
 	header {
 		margin: 12px 0 6px 0;
 	}
-	#wrapper {
+	footer {
 		width: 100%;
 		padding: 8px;
 	}
