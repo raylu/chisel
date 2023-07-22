@@ -69,6 +69,7 @@ main {
 	}
 	main .entry_content pre {
 		margin-left: 2em;
+		overflow-x: scroll;
 	}
 
 @media (max-width: 900px) {
