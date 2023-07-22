@@ -14,16 +14,16 @@
 <body>
 	<div id="wrapper">
 		{% block body %}
-			<div id="nav">
+			<nav>
 				<p><a href="/">Home</a> | <a href="/archives.html">Archives</a></p>
-			</div>
-			<div id="header">
+			</nav>
+			<header>
 				<h1>Blog</h1>
-			</div>
+			</header>
 
-			<div id="main">
+			<main>
 				{% block main %}{% endblock %}
-			</div>
+			</main>
 		{% endblock %}
 	</div>
 </body>

@@ -30,10 +30,10 @@ img {
 	box-shadow: 0 0 5px #222;
 }
 
-#header {
+header {
 	margin: 40px 0 27px 0;
 }
-	#header h1 {
+	header h1 {
 		margin-top: 10px; 
 		color: #987;
 		font-weight: bold;
@@ -41,33 +41,33 @@ img {
 		display: inline;
 	}
 
-#main {
+main {
 }
-	#main .entry h2 { /* title */
+	main .entry h2 { /* title */
 		font-weight: bold;
 		font-size: 1.75em;
 		margin: 1em 0 0;
 	}
-	#main .entry h3 { /* date */
+	main .entry h3 { /* date */
 		font-size: 1em;
 		font-weight: normal;
 		font-variant: small-caps;
 		margin: 0 0 1em;
 	}
-	#main .entry_content {
+	main .entry_content {
 		font-family: 'Roboto Slab', serif;
 	}
-	#main .entry_content p {
+	main .entry_content p {
 		line-height: 1.5;
 	}
-	#main .entry_content a {
+	main .entry_content a {
 		text-decoration: underline;
 	}
-	#main .entry_content h2 {
+	main .entry_content h2 {
 		font-weight: bold;
 		font-size: 1.2em;
 	}
-	#main .entry_content pre {
+	main .entry_content pre {
 		margin-left: 2em;
 	}
 
@@ -76,7 +76,7 @@ img {
 		margin: 0;
 		font-size: 14px;
 	}
-	#header {
+	header {
 		margin: 12px 0 6px 0;
 	}
 	#wrapper {
