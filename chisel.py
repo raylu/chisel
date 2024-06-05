@@ -7,7 +7,7 @@
 # jinja2
 
 import sys, re, time, os, codecs
-import jinja2, markdown
+import jinja2, markdown2
 
 #Settings
 SOURCE = "./blog/" #end with slash
@@ -26,7 +26,7 @@ TIME_FORMAT = "%B %d, %Y"
 ENTRY_TIME_FORMAT = "%m/%d/%Y"
 #FORMAT should be a callable that takes in text
 #and returns formatted text
-FORMAT = lambda text: markdown.markdown(text, extensions=['footnotes'])
+FORMAT = lambda text: markdown2.markdown(text, extras=['fenced-code-blocks', 'footnotes'])
 #########
 
 STEPS = []
