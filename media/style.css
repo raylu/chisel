@@ -1,3 +1,22 @@
+@font-face {
+	font-family: 'Metrophobic';
+	font-style: normal;
+	font-weight: 400;
+	src: url('/fonts/metrophobic-v23-latin-regular.woff2') format('woff2');
+}
+@font-face {
+	font-family: 'Roboto Slab';
+	font-style: normal;
+	font-weight: 400;
+	src: url('/fonts/roboto-slab-v34-latin-regular.woff2') format('woff2');
+}
+@font-face {
+	font-family: 'Roboto Slab';
+	font-style: normal;
+	font-weight: 700;
+	src: url('/fonts/roboto-slab-v34-latin-700.woff2') format('woff2');
+}
+
 * {
 	box-sizing: border-box;
 }
