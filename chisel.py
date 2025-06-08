@@ -70,6 +70,7 @@ def get_tree(source):
             files.append({
                 'title': title,
                 'epoch': time.mktime(date),
+                'fold_raw': ''.join(fold).rstrip(),
                 'fold': FORMAT(''.join(fold)),
                 'content': FORMAT(''.join(lines)),
                 'url': '/'.join([str(year), "%.2d" % month, "%.2d" % day, os.path.splitext(name)[0] + ".html"]),
