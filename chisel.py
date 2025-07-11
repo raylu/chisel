@@ -6,8 +6,8 @@
 # Requires:
 # jinja2
 
-import sys, re, time, os, codecs
-import jinja2, markdown2
+import codecs, datetime, os, re, sys, time
+import feedwerk.atom, jinja2, markdown2
 
 #Settings
 SOURCE = "./blog/" #end with slash
@@ -96,9 +96,8 @@ def write_file(url, data):
     dirs = os.path.dirname(path)
     if not os.path.isdir(dirs):
         os.makedirs(dirs)
-    file = open(path, "w")
-    file.write(data.encode('utf-8'))
-    file.close()
+    with open(path, 'w') as file:
+        file.write(data.encode('utf-8'))
 
 @step
 def generate_homepage(f, e):
@@ -111,6 +110,16 @@ def master_archive(f, e):
     """Generate master archive list of all entries"""
     template = e.get_template(TEMPLATES['archive'])
     write_file("archives.html", template.render(entries=f))
+
+@step
+def atom_feed(f, e):
+    feed = feedwerk.atom.AtomFeed('raylu', feed_url='https://blog.raylu.net/feed.atom',
+            url='https://blog.raylu.net/', author='raylu')
+    for entry in f:
+        url = 'https://blog.raylu.net/' + entry['url']
+        dt = datetime.datetime.fromtimestamp(entry['epoch'])
+        feed.add(entry['title'].rstrip(), entry['fold'], url=url, updated=dt)
+    write_file('feed.atom', feed.to_string())
 
 @step
 def detail_pages(f, e):
@@ -127,7 +136,7 @@ def drafts(f, e):
 
 @step
 def robots_txt(f, e):
-	write_file('robots.txt', 'User-agent: *\nDisallow:\n')
+    write_file('robots.txt', 'User-agent: *\nDisallow:\n')
 
 def main():
     print "Chiseling..."
