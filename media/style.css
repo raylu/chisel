@@ -124,3 +124,25 @@ footer {
 		overflow-wrap: break-word;
 	}
 }
+
+@media (prefers-color-scheme: light) {
+	body {
+		background-color: #fff;
+		color: #555;
+	}
+	a:link, a:visited, a:active {
+		color: #358;
+	}
+	a:hover {
+		color: #38b;
+	}
+	#wrapper {
+		background-color: #eee;
+		box-shadow: 0 0 5px #ddd;
+	}
+	header {
+		h1 {
+			color: #654;
+		}
+	}
+}
