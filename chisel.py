@@ -65,13 +65,13 @@ def get_tree(source):
                 elif line[0] not in ['\n', '#']:
                     seen_paragraph = True
                 if above_fold:
-                    fold.append(line)
+                    fold.append(line.rstrip())
 
             files.append({
                 'title': title,
                 'epoch': time.mktime(date),
-                'fold_raw': ''.join(fold).rstrip(),
-                'fold': FORMAT(''.join(fold)),
+                'fold_raw': ' '.join(fold).rstrip(),
+                'fold': FORMAT('\n'.join(fold)),
                 'content': FORMAT(''.join(lines)),
                 'url': '/'.join([str(year), "%.2d" % month, "%.2d" % day, os.path.splitext(name)[0] + ".html"]),
                 'pretty_date': time.strftime(TIME_FORMAT, date),
