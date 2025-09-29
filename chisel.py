@@ -33,9 +33,9 @@ STEPS = []
 
 def step(func):
     def wrapper(*args, **kwargs):
-        print "Starting " + func.__name__ + "...",
+        print("Starting " + func.__name__ + "...", end=' ')
         func(*args, **kwargs)
-        print "Done."
+        print("Done.")
     STEPS.append(wrapper)
     return wrapper
 
@@ -139,17 +139,17 @@ def robots_txt(f, e):
     write_file('robots.txt', 'User-agent: *\nDisallow:\n')
 
 def main():
-    print "Chiseling..."
-    print "\tReading files...",
+    print("Chiseling...")
+    print("\tReading files...", end=' ')
     files = sorted(get_tree(SOURCE), cmp=compare_entries)
     env = jinja2.Environment(loader=jinja2.FileSystemLoader(TEMPLATE_PATH), **TEMPLATE_OPTIONS)
-    print "Done."
-    print "\tRunning steps..."
+    print("Done.")
+    print("\tRunning steps...")
     for step in STEPS:
-        print "\t\t",
+        print("\t\t", end=' ')
         step(files, env)
-    print "\tDone."
-    print "Done."
+    print("\tDone.")
+    print("Done.")
 
 if __name__ == "__main__":
     sys.exit(main())
