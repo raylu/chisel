@@ -1,11 +1,5 @@
 #!/usr/bin/env python2
 
-# Chisel
-# David Zhou
-# 
-# Requires:
-# jinja2
-
 import codecs, datetime, os, re, sys, time
 import feedwerk.atom, jinja2, markdown2
 
@@ -45,7 +39,7 @@ def get_tree(source):
         for name in fs:
             if name[0] == ".": continue
             path = os.path.join(root, name)
-            f = open(path, "rU")
+            f = open(path, "r")
             title = f.readline()
             date = time.strptime(f.readline().strip(), ENTRY_TIME_FORMAT)
             year, month, day = date[:3]
@@ -56,7 +50,7 @@ def get_tree(source):
             seen_paragraph = False
             above_fold = True
             while True:
-                line = f.readline().decode('utf-8')
+                line = f.readline()
                 if line == '':
                     break
                 lines.append(line)
@@ -85,11 +79,8 @@ def get_tree(source):
             f.close()
     return files
 
-def compare_entries(x, y):
-    result = cmp(-x['epoch'], -y['epoch'])
-    if result == 0:
-        return -cmp(x['filename'], y['filename'])
-    return result
+def entry_sort_key(entry: dict) -> tuple:
+	return entry['epoch'], entry['filename']
 
 def write_file(url, data):
     path = DESTINATION + url
@@ -97,7 +88,7 @@ def write_file(url, data):
     if not os.path.isdir(dirs):
         os.makedirs(dirs)
     with open(path, 'w') as file:
-        file.write(data.encode('utf-8'))
+        file.write(data)
 
 @step
 def generate_homepage(f, e):
@@ -130,7 +121,7 @@ def detail_pages(f, e):
 
 @step
 def drafts(f, e):
-    files = sorted(get_tree(DRAFTS), cmp=compare_entries)
+    files = sorted(get_tree(DRAFTS), key=entry_sort_key, reverse=True)
     template = e.get_template(TEMPLATES['drafts'])
     write_file('drafts.html', template.render(entries=files))
 
@@ -141,7 +132,7 @@ def robots_txt(f, e):
 def main():
     print("Chiseling...")
     print("\tReading files...", end=' ')
-    files = sorted(get_tree(SOURCE), cmp=compare_entries)
+    files = sorted(get_tree(SOURCE), key=entry_sort_key, reverse=True)
     env = jinja2.Environment(loader=jinja2.FileSystemLoader(TEMPLATE_PATH), **TEMPLATE_OPTIONS)
     print("Done.")
     print("\tRunning steps...")
